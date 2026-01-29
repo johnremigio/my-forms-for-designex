@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)file:///C:/Users/USER/Desktop/victory/DOC/MOM/Designex%20-%20Minutes%20of%20Meeting.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designex - Minutes of Meeting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.3;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 10px;
+            font-size: 12px;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 2px;
+            letter-spacing: 1px;
+        }
+        
+        .header h2 {
+            color: #7f8c8d;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        
+        .meeting-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #ecf0f1;
+            border-radius: 3px;
+        }
+        
+        .info-item {
+            display: flex;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #2c3e50;
+            min-width: 100px;
+            font-size: 11px;
+        }
+        
+        .info-value {
+            color: #555;
+            flex: 1;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        textarea {
+            width: 100%;
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-family: inherit;
+            font-size: 11px;
+            background-color: white;
+        }
+        
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 3px rgba(52, 152, 219, 0.3);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 40px;
+        }
+        
+        .editable-content {
+            min-height: 40px;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            background-color: white;
+            margin-top: 4px;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 5px;
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+        }
+        
+        .section {
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            padding-bottom: 2px;
+            border-bottom: 1px solid #3498db;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .add-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 3px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: normal;
+        }
+        
+        .add-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .remove-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 2px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 10px;
+            margin-left: 5px;
+        }
+        
+        .remove-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .attendees-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+            margin-top: 4px;
+        }
+        
+        .attendee {
+            padding: 2px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+        
+        .content-area {
+            min-height: 100px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+            margin-top: 10px;
+        }
+        
+        .action-items {
+            margin-top: 4px;
+        }
+        
+        .action-item {
+            display: grid;
+            grid-template-columns: 30px 1fr 120px 80px 40px;
+            gap: 6px;
+            padding: 4px 6px;
+            margin-bottom: 3px;
+            background-color: #fff;
+            border-left: 2px solid #3498db;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            font-size: 11px;
+            align-items: center;
+        }
+        
+        .action-header {
+            display: grid;
+            grid-template-columns: 30px 1fr 120px 80px 40px;
+            gap: 6px;
+            padding: 4px 6px;
+            font-weight: bold;
+            background-color: #34495e;
+            color: white;
+            margin-bottom: 4px;
+            font-size: 11px;
+        }
+        
+        .discussion-item,
+        .decision-item {
+            display: flex;
+            align-items: start;
+            gap: 6px;
+            margin-bottom: 6px;
+            padding: 6px;
+            background-color: #fff;
+            border-left: 2px solid #3498db;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .discussion-item textarea,
+        .decision-item textarea {
+            flex: 1;
+            min-height: 50px;
+        }
+        
+        .item-number {
+            font-weight: bold;
+            color: #2c3e50;
+            min-width: 25px;
+        }
+        
+        .footer {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .signature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        
+        .signature-box {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        
+        .signature-label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+        
+        .signature-line {
+            border-top: 2px solid #333;
+            margin-top: 10px;
+            padding-top: 5px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 15px;
+                max-width: 100%;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+            .add-btn,
+            .remove-btn {
+                display: none;
+            }
+        }
+        
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DESIGNEX</h1>
+            <h2>Minutes of Meeting</h2>
+        </div>
+        
+        <div class="meeting-info">
+            <div class="info-item">
+                <span class="info-label">Meeting Title:</span>
+                <span class="info-value"><input type="text" name="meeting_title" placeholder="Enter meeting title"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Date:</span>
+                <span class="info-value"><input type="date" name="meeting_date"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Time:</span>
+                <span class="info-value"><input type="time" name="meeting_time"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Location:</span>
+                <span class="info-value"><input type="text" name="location" placeholder="Meeting location"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Meeting Chair:</span>
+                <span class="info-value"><input type="text" name="chair" placeholder="Chair name"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Minutes Taker:</span>
+                <span class="info-value"><input type="text" name="minutes_taker" placeholder="Minutes taker name"></span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span>Attendees</span>
+                <button class="add-btn" onclick="addAttendee()">+ Add Attendee</button>
+            </div>
+            <div class="attendees-list" id="attendeesList">
+                <div class="attendee">
+                    <input type="checkbox">
+                    <input type="text" placeholder="Attendee name" style="width: calc(100% - 60px); display: inline-block;">
+                    <button class="remove-btn" onclick="removeAttendee(this)">✕</button>
+                </div>
+                <div class="attendee">
+                    <input type="checkbox">
+                    <input type="text" placeholder="Attendee name" style="width: calc(100% - 60px); display: inline-block;">
+                    <button class="remove-btn" onclick="removeAttendee(this)">✕</button>
+                </div>
+            <div class="attendee">
+                <input type="checkbox">
+                <input type="text" placeholder="Attendee name" style="width: calc(100% - 60px); display: inline-block;">
+                <button class="remove-btn" onclick="removeAttendee(this)">✕</button>
+            </div><div class="attendee">
+                <input type="checkbox">
+                <input type="text" placeholder="Attendee name" style="width: calc(100% - 60px); display: inline-block;">
+                <button class="remove-btn" onclick="removeAttendee(this)">✕</button>
+            </div><div class="attendee">
+                <input type="checkbox">
+                <input type="text" placeholder="Attendee name" style="width: calc(100% - 60px); display: inline-block;">
+                <button class="remove-btn" onclick="removeAttendee(this)">✕</button>
+            </div></div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Absentees</div>
+            <div class="editable-content">
+                <textarea name="absentees" placeholder="List absentees..." style="height: 15px;"></textarea>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Meeting Objectives</div>
+            <div class="editable-content">
+                <textarea name="objectives" placeholder="Enter meeting objectives..."></textarea>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span>Discussion Points</span>
+                <button class="add-btn" onclick="addDiscussionPoint()">+ Add Point</button>
+            </div>
+            <div id="discussionList">
+                <div class="discussion-item">
+                    <span class="item-number">1.</span>
+                    <textarea placeholder="Enter discussion point..." style="height: 71px;"></textarea>
+                    <button class="remove-btn" onclick="removeDiscussionPoint(this)">✕</button>
+                </div>
+            <div class="discussion-item">
+                <span class="item-number">2.</span>
+                <textarea placeholder="Enter discussion point..." style="height: 104px;"></textarea>
+                <button class="remove-btn" onclick="removeDiscussionPoint(this)">✕</button>
+            </div><div class="discussion-item">
+                <span class="item-number">3.</span>
+                <textarea placeholder="Enter discussion point..." style="height: 72px;"></textarea>
+                <button class="remove-btn" onclick="removeDiscussionPoint(this)">✕</button>
+            </div></div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span>Decisions Made</span>
+                <button class="add-btn" onclick="addDecision()">+ Add Decision</button>
+            </div>
+            <div id="decisionsList">
+                <div class="decision-item">
+                    <span class="item-number">1.</span>
+                    <textarea placeholder="Enter decision made..."></textarea>
+                    <button class="remove-btn" onclick="removeDecision(this)">✕</button>
+                </div>
+            <div class="decision-item">
+                <span class="item-number">2.</span>
+                <textarea placeholder="Enter decision made..." style="height: 15px;"></textarea>
+                <button class="remove-btn" onclick="removeDecision(this)">✕</button>
+            </div><div class="decision-item">
+                <span class="item-number">3.</span>
+                <textarea placeholder="Enter decision made..."></textarea>
+                <button class="remove-btn" onclick="removeDecision(this)">✕</button>
+            </div><div class="decision-item">
+                <span class="item-number">4.</span>
+                <textarea placeholder="Enter decision made..."></textarea>
+                <button class="remove-btn" onclick="removeDecision(this)">✕</button>
+            </div></div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span>Action Items</span>
+                <button class="add-btn" onclick="addActionItem()">+ Add Action</button>
+            </div>
+            <div class="action-items">
+                <div class="action-header">
+                    <div>No.</div>
+                    <div>Action Item</div>
+                    <div>Responsible Person</div>
+                    <div>Due Date</div>
+                    <div></div>
+                </div>
+                <div id="actionItemsList">
+                    <div class="action-item">
+                        <div>1</div>
+                        <div><input type="text" placeholder="Action item description"></div>
+                        <div><input type="text" placeholder="Name"></div>
+                        <div><input type="date"></div>
+                        <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+                    </div>
+                <div class="action-item">
+                <div>2</div>
+                <div><input type="text" placeholder="Action item description"></div>
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="date"></div>
+                <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+            </div><div class="action-item">
+                <div>3</div>
+                <div><input type="text" placeholder="Action item description"></div>
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="date"></div>
+                <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+            </div><div class="action-item">
+                <div>4</div>
+                <div><input type="text" placeholder="Action item description"></div>
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="date"></div>
+                <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+            </div><div class="action-item">
+                <div>5</div>
+                <div><input type="text" placeholder="Action item description"></div>
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="date"></div>
+                <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+            </div><div class="action-item">
+                <div>6</div>
+                <div><input type="text" placeholder="Action item description"></div>
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="date"></div>
+                <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+            </div><div class="action-item">
+                <div>7</div>
+                <div><input type="text" placeholder="Action item description"></div>
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="date"></div>
+                <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+            </div><div class="action-item">
+                <div>8</div>
+                <div><input type="text" placeholder="Action item description"></div>
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="date"></div>
+                <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+            </div><div class="action-item">
+                <div>9</div>
+                <div><input type="text" placeholder="Action item description"></div>
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="date"></div>
+                <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+            </div></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Next Meeting</div>
+            <div class="meeting-info" style="grid-template-columns: 1fr 1fr;">
+                <div class="info-item">
+                    <span class="info-label">Date:</span>
+                    <span class="info-value"><input type="date" name="next_meeting_date"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Time:</span>
+                    <span class="info-value"><input type="time" name="next_meeting_time"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="signature-section">
+                <div class="signature-box">
+                    <div class="signature-label">Prepared By:</div>
+                    <input type="text" placeholder="Name" style="margin-bottom: 4px;">
+                    <input type="date" placeholder="Date">
+                </div>
+                <div class="signature-box">
+                    <div class="signature-label">Approved By:</div>
+                    <input type="text" placeholder="Name" style="margin-bottom: 4px;">
+                    <input type="date" placeholder="Date">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add Attendee
+        function addAttendee() {
+            const attendeesList = document.getElementById('attendeesList');
+            const newAttendee = document.createElement('div');
+            newAttendee.className = 'attendee';
+            newAttendee.innerHTML = `
+                <input type="checkbox">
+                <input type="text" placeholder="Attendee name" style="width: calc(100% - 60px); display: inline-block;">
+                <button class="remove-btn" onclick="removeAttendee(this)">✕</button>
+            `;
+            attendeesList.appendChild(newAttendee);
+        }
+
+        // Remove Attendee
+        function removeAttendee(button) {
+            button.parentElement.remove();
+        }
+
+        // Add Discussion Point
+        function addDiscussionPoint() {
+            const discussionList = document.getElementById('discussionList');
+            const items = discussionList.getElementsByClassName('discussion-item');
+            const newNumber = items.length + 1;
+            
+            const newItem = document.createElement('div');
+            newItem.className = 'discussion-item';
+            newItem.innerHTML = `
+                <span class="item-number">${newNumber}.</span>
+                <textarea placeholder="Enter discussion point..."></textarea>
+                <button class="remove-btn" onclick="removeDiscussionPoint(this)">✕</button>
+            `;
+            discussionList.appendChild(newItem);
+        }
+
+        // Remove Discussion Point
+        function removeDiscussionPoint(button) {
+            const discussionList = document.getElementById('discussionList');
+            button.parentElement.remove();
+            renumberItems(discussionList, 'discussion-item');
+        }
+
+        // Add Decision
+        function addDecision() {
+            const decisionsList = document.getElementById('decisionsList');
+            const items = decisionsList.getElementsByClassName('decision-item');
+            const newNumber = items.length + 1;
+            
+            const newItem = document.createElement('div');
+            newItem.className = 'decision-item';
+            newItem.innerHTML = `
+                <span class="item-number">${newNumber}.</span>
+                <textarea placeholder="Enter decision made..."></textarea>
+                <button class="remove-btn" onclick="removeDecision(this)">✕</button>
+            `;
+            decisionsList.appendChild(newItem);
+        }
+
+        // Remove Decision
+        function removeDecision(button) {
+            const decisionsList = document.getElementById('decisionsList');
+            button.parentElement.remove();
+            renumberItems(decisionsList, 'decision-item');
+        }
+
+        // Add Action Item
+        function addActionItem() {
+            const actionItemsList = document.getElementById('actionItemsList');
+            const items = actionItemsList.getElementsByClassName('action-item');
+            const newNumber = items.length + 1;
+            
+            const newItem = document.createElement('div');
+            newItem.className = 'action-item';
+            newItem.innerHTML = `
+                <div>${newNumber}</div>
+                <div><input type="text" placeholder="Action item description"></div>
+                <div><input type="text" placeholder="Name"></div>
+                <div><input type="date"></div>
+                <div><button class="remove-btn" onclick="removeActionItem(this)">✕</button></div>
+            `;
+            actionItemsList.appendChild(newItem);
+        }
+
+        // Remove Action Item
+        function removeActionItem(button) {
+            const actionItemsList = document.getElementById('actionItemsList');
+            button.closest('.action-item').remove();
+            renumberActionItems();
+        }
+
+        // Renumber items (for discussion points and decisions)
+        function renumberItems(container, className) {
+            const items = container.getElementsByClassName(className);
+            for (let i = 0; i < items.length; i++) {
+                const numberSpan = items[i].querySelector('.item-number');
+                numberSpan.textContent = (i + 1) + '.';
+            }
+        }
+
+        // Renumber action items
+        function renumberActionItems() {
+            const actionItemsList = document.getElementById('actionItemsList');
+            const items = actionItemsList.getElementsByClassName('action-item');
+            for (let i = 0; i < items.length; i++) {
+                items[i].children[0].textContent = i + 1;
+            }
+        }
+    </script>
+
+
+</body></html>
